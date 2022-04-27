@@ -39,7 +39,7 @@ export default function Home() {
   const key = process.env.NEXT_PUBLIC_WEATHER
 
   const geourl = 
-    `http://api.openweathermap.org/geo/1.0/zip`
+    `https://api.openweathermap.org/geo/1.0/zip`
     + `?zip=${zip},US`
     + `&appid=${key}`;
 
