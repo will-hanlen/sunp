@@ -93,7 +93,7 @@ export default function Home() {
   }
 
   return (
-    <main className="w-[600px] my-6 m-auto">
+    <main className="w-full max-w-[600px] my-3 m-auto p-3">
     <Head><title>Sunp</title></Head>
     <Search
 
