@@ -93,7 +93,8 @@ export default function Home() {
   }
 
   return (
-    <main className="w-full max-w-[600px] my-3 m-auto p-3">
+    <div className="w-full min-h-screen dark:bg-gray-800 dark:text-gray-200">
+    <main className="w-full max-w-[600px] m-auto p-3">
     <Head><title>Sunp</title></Head>
     <Search
 
@@ -105,5 +106,6 @@ export default function Home() {
     }} />
     { main() }
     </main>
+    </div>
   )
 }

@@ -16,11 +16,11 @@ export default function Search({ handleSubmit }) {
     className="border-2 rounded-lg flex items-stretch justify-between grow">
 
     <input type="number"
-    className="p-2 focus:bg-[#eee] block grow"
+    className="p-2 bg-transparent block grow"
     placeholder="64111"
     onChange={ (e) => setVal(e.target.value) }
     value={ val } />
-      <input type="submit" className="bg-gray-200 px-4 py-2 text-lg cursor-pointer"
+      <input type="submit" className="bg-transparent border-l px-4 py-2 text-lg cursor-pointer"
              value="&rarr;" />
     </form>
     </div>
