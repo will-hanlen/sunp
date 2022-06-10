@@ -56,6 +56,19 @@ export default function Home() {
     + `&appid=${key}`
   ), fetcher)
 
+  function dayExtractor(dt) {
+    const date = new Date(dt*1000)
+    return [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ][date.getDay()]
+  }
+
   function main() {
     if (error) return (
       <div className="border p-5 my-5">❌&nbsp; Zip code not found</div>
@@ -68,26 +81,30 @@ export default function Home() {
       <>
       <h1 className="text-xl font-bold mt-6" >{ location.name }</h1>
       <Today
-      day="Today"
+      day="Current"
       temp={weather.current.feels_like}
       main={weather.current.weather[0].main}
       desc={weather.current.weather[0].description}
       wind={weather.current.wind_speed}
       />
-      <Today
-      day="Tomorrow"
-      temp={weather.daily[0].feels_like.day}
-      main={weather.daily[0].weather[0].main}
-      desc={weather.daily[0].weather[0].description}
-      wind={weather.daily[0].wind_speed}
+          <Today
+          day="Today"
+          temp={weather.daily[0].feels_like.day}
+          main={weather.daily[0].weather[0].main}
+          desc={weather.daily[0].weather[0].description}
+          wind={weather.daily[0].wind_speed}
       />
-      <Today
-      day="Next Day"
-      temp={weather.daily[1].feels_like.day}
-      main={weather.daily[1].weather[0].main}
-      desc={weather.daily[1].weather[0].description}
-      wind={weather.daily[1].wind_speed}
-      />
+      {
+        [1, 2, 3, 4].map(i => (
+          <Today
+          day={dayExtractor(weather.daily[i].dt)}
+          temp={weather.daily[i].feels_like.day}
+          main={weather.daily[i].weather[0].main}
+          desc={weather.daily[i].weather[0].description}
+          wind={weather.daily[i].wind_speed}
+          />
+        ))
+      }
       </>
     )
   }
