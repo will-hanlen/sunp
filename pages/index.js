@@ -97,6 +97,7 @@ export default function Home() {
       {
         [1, 2, 3, 4].map(i => (
           <Today
+          key={i}
           day={dayExtractor(weather.daily[i].dt)}
           temp={weather.daily[i].feels_like.day}
           main={weather.daily[i].weather[0].main}
