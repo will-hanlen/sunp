@@ -79,51 +79,55 @@ export default function Home() {
 
     return (
       <>
-      <h1 className="text-xl font-bold mt-6" >{ location.name }</h1>
-      <Today
-      day="Current"
-      temp={weather.current.feels_like}
-      main={weather.current.weather[0].main}
-      desc={weather.current.weather[0].description}
-      wind={weather.current.wind_speed}
-      />
+        <h1 className="text-xl font-bold mt-6" >{ location.name }</h1>
+        <hr className="border-2 mt-5"/>
+        <div className="flex flex-row space-between gap-12">
           <Today
-          day="Today"
-          temp={weather.daily[0].feels_like.day}
-          main={weather.daily[0].weather[0].main}
-          desc={weather.daily[0].weather[0].description}
-          wind={weather.daily[0].wind_speed}
-      />
-      {
-        [1, 2, 3, 4].map(i => (
-          <Today
-          key={i}
-          day={dayExtractor(weather.daily[i].dt)}
-          temp={weather.daily[i].feels_like.day}
-          main={weather.daily[i].weather[0].main}
-          desc={weather.daily[i].weather[0].description}
-          wind={weather.daily[i].wind_speed}
+            day="Current"
+            temp={weather.current.feels_like}
+            main={weather.current.weather[0].main}
+            desc={weather.current.weather[0].description}
+            wind={weather.current.wind_speed}
           />
-        ))
-      }
+          <Today
+            day="Today"
+            temp={weather.daily[0].feels_like.day}
+            main={weather.daily[0].weather[0].main}
+            desc={weather.daily[0].weather[0].description}
+            wind={weather.daily[0].wind_speed}
+          />
+        </div>
+        <hr className="border-2"/>
+        {
+          [1, 2, 3, 4].map(i => (
+            <Today
+              key={i}
+              day={dayExtractor(weather.daily[i].dt)}
+              temp={weather.daily[i].feels_like.day}
+              main={weather.daily[i].weather[0].main}
+              desc={weather.daily[i].weather[0].description}
+              wind={weather.daily[i].wind_speed}
+            />
+          ))
+        }
       </>
     )
   }
 
   return (
     <div className="w-full min-h-screen dark:bg-gray-800 dark:text-gray-200">
-    <main className="w-full max-w-[600px] m-auto p-3">
-    <Head><title>Sunp</title></Head>
-    <Search
+      <main className="w-full max-w-[600px] m-auto p-3">
+        <Head><title>Sunp</title></Head>
+        <Search
 
-    handleSubmit={(z) => {
-      router.push({
-        pathname: "/",
-        query: { zip: z},
-      })
-    }} />
-    { main() }
-    </main>
+          handleSubmit={(z) => {
+            router.push({
+              pathname: "/",
+              query: { zip: z},
+            })
+          }} />
+        { main() }
+      </main>
     </div>
   )
 }
